@@ -9,9 +9,8 @@ class ImageAnimation extends StatefulWidget {
 }
 
 class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStateMixin {
-  int currentImageIndex = 0;
-
-  //String pathProviderOld = 'assets/images/all_sequence_fixed';
+  int currentStep = 1;
+  late AnimationController controller;
   String pathProviderNew = 'assets/images/all_sequence';
 
   int durationSequence1 = 3000;
@@ -23,6 +22,18 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
     super.initState();
   }
 
+  void onTap() {
+    if (currentStep == 4) {
+      setState(() {
+        currentStep = 1;
+      });
+    } else {
+      setState(() {
+        currentStep++;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,39 +41,57 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
       appBar: AppBar(
         title: const Text('Test'),
       ),
-      body: ListView(
-        children: <Widget>[
-          TweenImageWidget(
-            ImagesEntry(
-              1,
-              59,
-              '$pathProviderNew/sequence__%s.png',
+      body: GestureDetector(
+        onTap: onTap,
+        child: Column(
+          children: <Widget>[
+            Visibility(
+              visible: currentStep == 1,
+              child: TweenImageWidget(
+                ImagesEntry(
+                  1,
+                  59,
+                  '$pathProviderNew/sequence__%s.png',
+                ),
+                durationMilliseconds: durationSequence1,
+                startsValue: 0,
+              ),
             ),
-            durationMilliseconds: durationSequence1,
-            repeat: true,
-            startsValue: 0,
-          ),
-          TweenImageWidget(
-            ImagesEntry(
-              60,
-              85,
-              '$pathProviderNew/sequence__%s.png',
+            Visibility(
+              visible: currentStep == 2,
+              child: TweenImageWidget(
+                ImagesEntry(
+                  60,
+                  85,
+                  '$pathProviderNew/sequence__%s.png',
+                ),
+                durationMilliseconds: durationSequence2,
+              ),
             ),
-            durationMilliseconds: durationSequence2,
-            repeat: true,
-            startsValue: 0,
-          ),
-          TweenImageWidget(
-            ImagesEntry(
-              86,
-              257,
-              '$pathProviderNew/sequence__%s.png',
+            Visibility(
+              visible: currentStep == 3,
+              child: TweenImageWidget(
+                ImagesEntry(
+                  86,
+                  257,
+                  '$pathProviderNew/sequence__%s.png',
+                ),
+                durationMilliseconds: durationSequence3,
+              ),
             ),
-            durationMilliseconds: durationSequence3,
-            repeat: true,
-            startsValue: 0,
-          ),
-        ],
+            Visibility(
+              visible: currentStep == 4,
+              child: TweenImageWidget(
+                ImagesEntry(
+                  1,
+                  257,
+                  '$pathProviderNew/sequence__%s.png',
+                ),
+                durationMilliseconds: 13000,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
