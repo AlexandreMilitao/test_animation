@@ -17,13 +17,13 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
   int currentIndex = 1;
 
   void onTap() {
-    // if (currentIndex == 4) {
-    //   setState(() {
-    //     currentIndex = 1;
-    //     startTimer();
-    //   });
-    // } else
-    if (currentIndex == 2 || currentIndex == 3) {
+    if (currentIndex == 4) {
+      setState(() {
+        currentIndex = 1;
+        startTimer1();
+      });
+    } else if (currentIndex == 2) {
+      startTime3();
       setState(() {
         currentIndex++;
       });
@@ -33,14 +33,24 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
   @override
   void initState() {
     super.initState();
-    startTimer();
+    startTimer1();
   }
 
-  void startTimer() {
+  void startTimer1() {
     Timer(const Duration(milliseconds: 3000), () {
       if (mounted) {
         setState(() {
           currentIndex = 2;
+        });
+      }
+    });
+  }
+
+  void startTime3() {
+    Timer(const Duration(milliseconds: 8600), () {
+      if (mounted) {
+        setState(() {
+          currentIndex = 4;
         });
       }
     });
