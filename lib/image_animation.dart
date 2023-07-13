@@ -1,5 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:tween_image_widget/tween_image_widget.dart';
+
+import 'package:test_animation/widgets/sequence_1.dart';
+import 'package:test_animation/widgets/sequence_2.dart';
+import 'package:test_animation/widgets/sequence_3.dart';
 
 class ImageAnimation extends StatefulWidget {
   const ImageAnimation({Key? key}) : super(key: key);
@@ -9,29 +14,36 @@ class ImageAnimation extends StatefulWidget {
 }
 
 class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStateMixin {
-  int currentStep = 1;
-  late AnimationController controller;
-  String pathProviderNew = 'assets/images/all_sequence';
+  int currentIndex = 1;
 
-  int durationSequence1 = 3000;
-  int durationSequence2 = 1250;
-  int durationSequence3 = 8600;
+  void onTap() {
+    // if (currentIndex == 4) {
+    //   setState(() {
+    //     currentIndex = 1;
+    //     startTimer();
+    //   });
+    // } else
+    if (currentIndex == 2 || currentIndex == 3) {
+      setState(() {
+        currentIndex++;
+      });
+    }
+  }
 
   @override
   void initState() {
     super.initState();
+    startTimer();
   }
 
-  void onTap() {
-    if (currentStep == 4) {
-      setState(() {
-        currentStep = 1;
-      });
-    } else {
-      setState(() {
-        currentStep++;
-      });
-    }
+  void startTimer() {
+    Timer(const Duration(milliseconds: 3000), () {
+      if (mounted) {
+        setState(() {
+          currentIndex = 2;
+        });
+      }
+    });
   }
 
   @override
@@ -43,53 +55,17 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
       ),
       body: GestureDetector(
         onTap: onTap,
-        child: Column(
+        child: ListView(
           children: <Widget>[
-            Visibility(
-              visible: currentStep == 1,
-              child: TweenImageWidget(
-                ImagesEntry(
-                  1,
-                  59,
-                  '$pathProviderNew/sequence__%s.png',
-                ),
-                durationMilliseconds: durationSequence1,
-                startsValue: 0,
-              ),
+            Column(
+              children: [
+                if (currentIndex == 1) const Sequence1(),
+                if (currentIndex == 2) const Sequence2(),
+                if (currentIndex == 3) const Sequence3(),
+                if (currentIndex == 4) Image.asset('assets/images/all_sequence/sequence__257.png'),
+              ],
             ),
-            Visibility(
-              visible: currentStep == 2,
-              child: TweenImageWidget(
-                ImagesEntry(
-                  60,
-                  85,
-                  '$pathProviderNew/sequence__%s.png',
-                ),
-                durationMilliseconds: durationSequence2,
-              ),
-            ),
-            Visibility(
-              visible: currentStep == 3,
-              child: TweenImageWidget(
-                ImagesEntry(
-                  86,
-                  257,
-                  '$pathProviderNew/sequence__%s.png',
-                ),
-                durationMilliseconds: durationSequence3,
-              ),
-            ),
-            Visibility(
-              visible: currentStep == 4,
-              child: TweenImageWidget(
-                ImagesEntry(
-                  1,
-                  257,
-                  '$pathProviderNew/sequence__%s.png',
-                ),
-                durationMilliseconds: 13000,
-              ),
-            ),
+            //const AllSequence()
           ],
         ),
       ),
