@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:test_animation/widgets/prize_image.dart';
+import 'package:test_animation/widgets/reward_animation.dart';
 
 import 'package:test_animation/widgets/sequence_1.dart';
 import 'package:test_animation/widgets/sequence_2.dart';
@@ -18,12 +18,13 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
   int currentIndex = 1;
 
   void onTap() {
-    if (currentIndex == 4) {
-      setState(() {
-        currentIndex = 1;
-        startTimer1();
-      });
-    } else if (currentIndex == 2) {
+    // if (currentIndex == 4) {
+    //   setState(() {
+    //     currentIndex = 1;
+    //     startTimer1();
+    //   });
+    // } else
+    if (currentIndex == 2) {
       startTime3();
       setState(() {
         currentIndex++;
@@ -48,7 +49,7 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
   }
 
   void startTime3() {
-    Timer(const Duration(milliseconds: 8500), () {
+    Timer(const Duration(milliseconds: 4500), () {
       if (mounted) {
         setState(() {
           currentIndex = 4;
@@ -68,7 +69,7 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
             if (currentIndex == 1) const Sequence1(),
             if (currentIndex == 2) const Sequence2(),
             if (currentIndex == 3) const Sequence3(),
-            if (currentIndex == 4) const PrizeImage(),
+            if (currentIndex == 4) const RewardAnimation(),
           ],
         ),
       ),

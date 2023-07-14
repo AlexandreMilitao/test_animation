@@ -13,6 +13,8 @@ class _Sequence1State extends State<Sequence1> {
   int durationSequence1 = 3000;
   @override
   Widget build(BuildContext context) {
+    MediaQueryData sizeInfo = MediaQuery.of(context);
+    double height = sizeInfo.size.height;
     return Center(
       child: TweenImageWidget(
         ImagesEntry(
@@ -20,8 +22,8 @@ class _Sequence1State extends State<Sequence1> {
           59,
           '$pathProviderNew/sequence__%s.png',
         ),
+        height: height * 0.9,
         durationMilliseconds: durationSequence1,
-        startsValue: 0,
       ),
     );
   }

@@ -67,6 +67,7 @@ flutter:
   assets:
     - assets/images/animation/
     - assets/images/all_sequence/
+    - assets/images/rewards/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -19,8 +19,11 @@ class _HomePageState extends State<HomePage> {
     overlayEntry = OverlayEntry(
       builder: (context) => SafeArea(
         child: Stack(
+          alignment: Alignment.center,
           children: [
-            const Center(child: ImageAnimation()),
+            const Center(
+              child: ImageAnimation(),
+            ),
             Container(
               alignment: Alignment.topRight,
               child: IconButton(

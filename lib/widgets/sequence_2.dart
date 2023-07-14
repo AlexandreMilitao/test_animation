@@ -26,6 +26,7 @@ class _Sequence2State extends State<Sequence2> {
             85,
             '$pathProviderNew/sequence__%s.png',
           ),
+          height: height * 0.9,
           durationMilliseconds: durationSequence2,
         ),
         Positioned(
@@ -36,12 +37,19 @@ class _Sequence2State extends State<Sequence2> {
           child: Center(
               child: Container(
             alignment: Alignment.center,
-            color: Colors.pink[300],
-            height: height / 25,
-            width: width / 2,
+            //color: Colors.pink[300],
+            decoration: BoxDecoration(
+              color: Colors.pink,
+              borderRadius: BorderRadius.circular(5),
+            ),
+            height: height / 20,
+            width: width / 1.75,
             child: const Text(
               'PRESS ME, PRESS ME NOW!',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
           )),
         ),
