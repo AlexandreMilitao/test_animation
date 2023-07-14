@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_animation/image_animation.dart';
+import 'dart:ui' as ui;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,25 +19,34 @@ class _HomePageState extends State<HomePage> {
 
     overlayEntry = OverlayEntry(
       builder: (context) => SafeArea(
-        child: Stack(
-          children: [
-            const Center(child: ImageAnimation()),
-            Container(
-              alignment: Alignment.topRight,
-              child: IconButton(
-                style: IconButton.styleFrom(
-                  backgroundColor: Colors.grey[800],
+        child: BackdropFilter(
+          filter: ui.ImageFilter.blur(
+            sigmaX: 1,
+            sigmaY: 1,
+          ),
+          child: Material(
+            type: MaterialType.transparency,
+            child: Stack(
+              children: [
+                const Center(child: ImageAnimation()),
+                Container(
+                  alignment: Alignment.topRight,
+                  child: IconButton(
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.grey[800],
+                    ),
+                    onPressed: () {
+                      removeOverlay();
+                    },
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-                onPressed: () {
-                  removeOverlay();
-                },
-                icon: const Icon(
-                  Icons.close,
-                  color: Colors.white,
-                ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

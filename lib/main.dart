@@ -21,9 +21,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SafeArea(
+      home: SafeArea(
         child: Scaffold(
-          body: HomePage(),
+          body: const HomePage(),
+          bottomNavigationBar: BottomAppBar(
+            color: Colors.pink,
+            child: Container(),
+          ),
         ),
       ),
     );
