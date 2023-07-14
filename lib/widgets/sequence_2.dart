@@ -28,24 +28,22 @@ class _Sequence2State extends State<Sequence2> {
           ),
           durationMilliseconds: durationSequence2,
         ),
-        SizedBox(
-          height: 650,
-          width: 392,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Container(
-                alignment: Alignment.center,
-                color: Colors.pink[300],
-                height: height / 25,
-                width: width / 2,
-                child: const Text(
-                  'PRESS ME, PRESS ME NOW!',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ],
-          ),
+        Positioned(
+          // padding: EdgeInsets.only(bottom: height * 0.2),
+          // alignment: Alignment.bottomCenter,
+          bottom: height * 0.05,
+          width: width,
+          child: Center(
+              child: Container(
+            alignment: Alignment.center,
+            color: Colors.pink[300],
+            height: height / 25,
+            width: width / 2,
+            child: const Text(
+              'PRESS ME, PRESS ME NOW!',
+              style: TextStyle(color: Colors.white),
+            ),
+          )),
         ),
       ],
     );
