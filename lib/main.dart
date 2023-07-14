@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test_animation/image_animation.dart';
+import 'package:test_animation/home.dart';
+
+///import 'package:test_animation/image_animation.dart';
+// import 'package:test_animation/image_animation.dart';
 // import 'package:test_animation/widgets/device_curtain_page.dart';
 // import 'package:tween_image_widget/tween_image_widget.dart';
 
@@ -13,11 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const SafeArea(
+        child: Scaffold(
+          body: HomePage(),
         ),
-        home: const ImageAnimation());
+      ),
+    );
   }
 }

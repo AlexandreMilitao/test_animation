@@ -13,14 +13,16 @@ class _Sequence1State extends State<Sequence1> {
   int durationSequence1 = 3000;
   @override
   Widget build(BuildContext context) {
-    return TweenImageWidget(
-      ImagesEntry(
-        1,
-        59,
-        '$pathProviderNew/sequence__%s.png',
+    return Center(
+      child: TweenImageWidget(
+        ImagesEntry(
+          1,
+          59,
+          '$pathProviderNew/sequence__%s.png',
+        ),
+        durationMilliseconds: durationSequence1,
+        startsValue: 0,
       ),
-      durationMilliseconds: durationSequence1,
-      startsValue: 0,
     );
   }
 }
