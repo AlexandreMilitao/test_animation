@@ -60,18 +60,28 @@ class _ImageAnimationState extends State<ImageAnimation> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.pink[100],
-      body: GestureDetector(
-        onTap: onTap,
-        child: Column(
-          children: [
-            if (currentIndex == 1) const Sequence1(),
-            if (currentIndex == 2) const Sequence2(),
-            if (currentIndex == 3) const Sequence3(),
-            if (currentIndex == 4) const RewardAnimation(),
-          ],
-        ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Stack(
+        children: [
+          Opacity(
+            opacity: 0.5,
+            child: Scaffold(
+              backgroundColor: Colors.pink[200],
+            ),
+          ),
+          Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Column(
+              children: [
+                if (currentIndex == 1) const Sequence1(),
+                if (currentIndex == 2) const Sequence2(),
+                if (currentIndex == 3) const Sequence3(),
+                if (currentIndex == 4) const RewardAnimation(),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

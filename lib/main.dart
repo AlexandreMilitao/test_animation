@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
       home: const SafeArea(
         child: Scaffold(
           body: HomePage(),
+          bottomNavigationBar: BottomAppBar(
+            color: Colors.pink,
+          ),
         ),
       ),
     );

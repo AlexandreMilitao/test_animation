@@ -47,6 +47,7 @@ class _Sequence2State extends State<Sequence2> {
             child: const Text(
               'PRESS ME, PRESS ME NOW!',
               style: TextStyle(
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
