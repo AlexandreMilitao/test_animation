@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_animation/classes/loot_box_overlay_opt.dart';
+import 'package:test_animation/overlay/loot_box_overlay_opt.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

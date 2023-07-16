@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_animation/classes/animation_overlar.dart';
+import 'package:test_animation/overlay/animation_overlar.dart';
 
 class LootBoxOverlayOpe {
   showOverLay(BuildContext context) async {

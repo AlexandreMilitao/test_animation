@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:test_animation/widgets/reward_widget.dart';
+import 'package:test_animation/overlay/reward_overlay.dart';
 import 'package:tween_image_widget/tween_image_widget.dart';
 
 class RewardAnimation extends StatefulWidget {
@@ -17,7 +17,6 @@ class _RewardAnimationState extends State<RewardAnimation> {
   @override
   void initState() {
     super.initState();
-    //RewardOverlay().showOverLay(context);
     startTime();
   }
 
@@ -38,8 +37,9 @@ class _RewardAnimationState extends State<RewardAnimation> {
 
     return Expanded(
       child: Stack(
+        alignment: Alignment.topCenter,
         children: [
-          RewardWidget(
+          RewardOverlay(
             overlayEntry: widget.overlayEntry,
           ),
           Visibility(
