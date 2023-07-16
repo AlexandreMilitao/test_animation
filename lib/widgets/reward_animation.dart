@@ -1,21 +1,23 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:test_animation/widgets/reward.dart';
+import 'package:test_animation/widgets/reward_widget.dart';
 import 'package:tween_image_widget/tween_image_widget.dart';
 
 class RewardAnimation extends StatefulWidget {
-  const RewardAnimation({super.key});
-
+  const RewardAnimation({super.key, required this.overlayEntry});
+  final OverlayEntry overlayEntry;
   @override
   State<RewardAnimation> createState() => _RewardAnimationState();
 }
 
 class _RewardAnimationState extends State<RewardAnimation> {
   bool visible = true;
+
   @override
   void initState() {
     super.initState();
+    //RewardOverlay().showOverLay(context);
     startTime();
   }
 
@@ -37,7 +39,9 @@ class _RewardAnimationState extends State<RewardAnimation> {
     return Expanded(
       child: Stack(
         children: [
-          const RewardWidget(),
+          RewardWidget(
+            overlayEntry: widget.overlayEntry,
+          ),
           Visibility(
             visible: visible,
             child: TweenImageWidget(

@@ -1,9 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 class RewardWidget extends StatefulWidget {
-  const RewardWidget({super.key});
+  const RewardWidget({super.key, required this.overlayEntry});
+
+  final OverlayEntry overlayEntry;
 
   @override
   State<RewardWidget> createState() => _RewardWidgetState();
@@ -11,6 +12,7 @@ class RewardWidget extends StatefulWidget {
 
 class _RewardWidgetState extends State<RewardWidget> {
   bool visible = true;
+
   @override
   void initState() {
     super.initState();
@@ -33,6 +35,37 @@ class _RewardWidgetState extends State<RewardWidget> {
 
     return Stack(
       children: [
+        Positioned(
+          bottom: height * 0.1,
+          width: width,
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () {
+                widget.overlayEntry.remove();
+              },
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.pink),
+                shape: MaterialStateProperty.all(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
+              ),
+              child: Container(
+                alignment: Alignment.center,
+                height: height / 20,
+                width: width / 1.75,
+                child: const Text(
+                  "REDEEM NOW",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
         Positioned(
           height: height * 0.8,
           width: width,
@@ -92,44 +125,21 @@ class _RewardWidgetState extends State<RewardWidget> {
           ),
         ),
         Positioned(
-          bottom: height * 0.1,
+          bottom: height * 0.23,
           width: width,
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width * 0.1),
-                  child: const Text(
-                    "You can find and claim your prize in the 'Spend' tab in rewards",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.pink,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+            child: Container(
+              width: width / 1,
+              padding: EdgeInsets.symmetric(horizontal: width * 0.1),
+              child: const Text(
+                "You can find and claim your prize in the 'Spend' tab in rewards",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.pink,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  height: height / 20,
-                  width: width / 1.75,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.pink,
-                  ),
-                  child: const Text(
-                    "REDEEM NOW",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
